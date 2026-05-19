@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "honeycomb",
+  "description": "sunxiao 的 Claude Code 能力集 —— skills、agents、commands、hooks 的蜂巢式集合",
+  "owner": {
+    "name": "sunxiao",
+    "email": "sunxiaoyes@outlook.com",
+    "url": "https://github.com/TNT-Likely"
+  },
+  "plugins": [
+    {
+      "name": "bee-stack",
+      "source": "./plugins/bee-stack",
+      "displayName": "Bee Stack",
+      "description": "脚手架技能:基于 BeeCount-Cloud 的 FastAPI + Vite 前端 + Docker + GitHub Actions monorepo 模式,生成新项目并按领域语义改造。",
+      "version": "0.1.0",
+      "author": {
+        "name": "sunxiao",
+        "email": "sunxiaoyes@outlook.com",
+        "url": "https://github.com/TNT-Likely"
+      },
+      "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/bee-stack",
+      "repository": "https://github.com/TNT-Likely/honeycomb",
+      "license": "MIT",
+      "keywords": ["scaffold", "monorepo", "fastapi", "vite", "docker", "github-actions"],
+      "category": "scaffolding"
+    }
+  ]
+}
