@@ -1,0 +1,15 @@
+{
+  "name": "flutter-riverpod-drift",
+  "displayName": "Flutter + Riverpod + Drift",
+  "version": "0.1.0",
+  "description": "脚手架技能:Flutter app + Riverpod 状态管理 + Drift 本地 DB + 可选云同步,带 Design Token / Repository 多端切换 / 严格迁移纪律等成熟模式。脱胎于 BeeCount 生产实践。",
+  "author": {
+    "name": "sunxiao",
+    "email": "sunxiaoyes@outlook.com",
+    "url": "https://github.com/TNT-Likely"
+  },
+  "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/flutter-riverpod-drift",
+  "repository": "https://github.com/TNT-Likely/honeycomb",
+  "license": "MIT",
+  "keywords": ["scaffold", "flutter", "riverpod", "drift", "mobile-app", "design-tokens", "repository-pattern"]
+}

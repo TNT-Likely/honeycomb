@@ -10,8 +10,9 @@
 # 1. 把这个 marketplace 加进你的 Claude Code
 /plugin marketplace add TNT-Likely/honeycomb
 
-# 2. 装具体的 plugin
+# 2. 装具体的 plugin(按需选)
 /plugin install fastapi-vite-saas@honeycomb
+/plugin install flutter-riverpod-drift@honeycomb
 ```
 
 > 需要 Claude Code 支持 plugin marketplace 功能。如果命令不识别,请升级到最新版 Claude Code。
@@ -21,6 +22,7 @@
 | Plugin | 简介 | 状态 |
 |---|---|---|
 | [fastapi-vite-saas](./plugins/fastapi-vite-saas/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
+| [flutter-riverpod-drift](./plugins/flutter-riverpod-drift/) | Flutter + Riverpod + Drift app 脚手架,带 Design Token + Repository 多端切换,基于 BeeCount 生产实践 | 🟢 v0.1.0 |
 
 (更多 plugin 陆续加入中)
 
