@@ -9,9 +9,9 @@
   },
   "plugins": [
     {
-      "name": "bee-stack",
-      "source": "./plugins/bee-stack",
-      "displayName": "Bee Stack",
+      "name": "fastapi-vite-saas",
+      "source": "./plugins/fastapi-vite-saas",
+      "displayName": "FastAPI + Vite SaaS",
       "description": "脚手架技能:基于 BeeCount-Cloud 的 FastAPI + Vite 前端 + Docker + GitHub Actions monorepo 模式,生成新项目并按领域语义改造。",
       "version": "0.1.0",
       "author": {
@@ -19,7 +19,7 @@
         "email": "sunxiaoyes@outlook.com",
         "url": "https://github.com/TNT-Likely"
       },
-      "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/bee-stack",
+      "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/fastapi-vite-saas",
       "repository": "https://github.com/TNT-Likely/honeycomb",
       "license": "MIT",
       "keywords": ["scaffold", "monorepo", "fastapi", "vite", "docker", "github-actions"],

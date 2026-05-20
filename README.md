@@ -11,7 +11,7 @@
 /plugin marketplace add TNT-Likely/honeycomb
 
 # 2. 装具体的 plugin
-/plugin install bee-stack@honeycomb
+/plugin install fastapi-vite-saas@honeycomb
 ```
 
 > 需要 Claude Code 支持 plugin marketplace 功能。如果命令不识别,请升级到最新版 Claude Code。
@@ -20,7 +20,7 @@
 
 | Plugin | 简介 | 状态 |
 |---|---|---|
-| [bee-stack](./plugins/bee-stack/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
+| [fastapi-vite-saas](./plugins/fastapi-vite-saas/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
 
 (更多 plugin 陆续加入中)
 
@@ -63,7 +63,7 @@ plugins/<your-plugin>/
 git clone https://github.com/TNT-Likely/honeycomb.git
 # 在 Claude Code 里:
 /plugin marketplace add /path/to/honeycomb
-/plugin install bee-stack@honeycomb
+/plugin install fastapi-vite-saas@honeycomb
 ```
 
 ## License

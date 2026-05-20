@@ -1,10 +1,10 @@
-# bee-stack
+# fastapi-vite-saas
 
 脚手架 Claude Code 插件:基于 [BeeCount-Cloud](https://github.com/TNT-Likely/BeeCount-Cloud) 的生产实践,一键生成 **FastAPI + pnpm/Vite 前端 + Docker + GitHub Actions** 的单仓双端项目。
 
 ## 这个插件能做什么
 
-跟 Claude 说一句"按 bee-stack 起一个新项目叫 Foo",它会:
+跟 Claude 说一句"按 fastapi-vite-saas 起一个新项目叫 Foo",它会:
 
 1. 问清几个关键参数(项目名、前端框架、数据库、可选模块)
 2. 生成完整目录树和所有基础文件(`src/`、`frontend/`、Dockerfile、Makefile、GHA workflows、Alembic migrations、.env.example、双语 README ...)
@@ -15,7 +15,7 @@
 
 ```bash
 /plugin marketplace add TNT-Likely/honeycomb
-/plugin install bee-stack@honeycomb
+/plugin install fastapi-vite-saas@honeycomb
 ```
 
 ## 适用场景
