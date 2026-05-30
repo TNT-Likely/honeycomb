@@ -1,0 +1,15 @@
+{
+  "name": "github-issue-triage",
+  "displayName": "GitHub Issue Triage",
+  "version": "0.1.0",
+  "description": "GitHub issue 治理工具集,含两个互补技能:triage(全量 open issue 按 数据正确性>呼声>卖点相关度 四级分流、产出优先级文档、可 /schedule 定期巡检)与 analyze-issue(单条深度分析:是否真 bug / 要不要修 / 优先级 / 功能请求是否合理,bug 结合代码库验证根因)。脱胎于 BeeCount issue 治理实践。",
+  "author": {
+    "name": "sunxiao",
+    "email": "sunxiaoyes@outlook.com",
+    "url": "https://github.com/TNT-Likely"
+  },
+  "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/github-issue-triage",
+  "repository": "https://github.com/TNT-Likely/honeycomb",
+  "license": "MIT",
+  "keywords": ["github", "issue", "triage", "backlog", "prioritization", "gh-cli", "schedule"]
+}

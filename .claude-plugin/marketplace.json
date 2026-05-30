@@ -41,6 +41,23 @@
       "license": "MIT",
       "keywords": ["scaffold", "flutter", "riverpod", "drift", "mobile-app", "design-tokens", "repository-pattern"],
       "category": "scaffolding"
+    },
+    {
+      "name": "github-issue-triage",
+      "source": "./plugins/github-issue-triage",
+      "displayName": "GitHub Issue Triage",
+      "description": "GitHub issue 治理工具集:triage(全量四级分流→优先级文档,可 /schedule 定期巡检)+ analyze-issue(单条深度分析:是否真 bug / 要不要修 / 优先级 / 功能请求是否合理,bug 结合代码验证)。",
+      "version": "0.1.0",
+      "author": {
+        "name": "sunxiao",
+        "email": "sunxiaoyes@outlook.com",
+        "url": "https://github.com/TNT-Likely"
+      },
+      "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/github-issue-triage",
+      "repository": "https://github.com/TNT-Likely/honeycomb",
+      "license": "MIT",
+      "keywords": ["github", "issue", "triage", "backlog", "prioritization", "gh-cli"],
+      "category": "productivity"
     }
   ]
 }
