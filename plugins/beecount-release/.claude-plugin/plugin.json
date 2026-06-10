@@ -1,0 +1,14 @@
+{
+  "name": "beecount-release",
+  "description": "BeeCount 全家桶发版流水线:双仓 tag 触发 CI、changelog 双格式、官网同步、视频文案收尾,带版本号与发布范围的用户确认门。",
+  "version": "0.1.0",
+  "author": {
+    "name": "sunxiao",
+    "email": "sunxiaoyes@outlook.com",
+    "url": "https://github.com/TNT-Likely"
+  },
+  "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/beecount-release",
+  "repository": "https://github.com/TNT-Likely/honeycomb",
+  "license": "MIT",
+  "keywords": ["release", "beecount", "changelog", "workflow", "ci"]
+}
