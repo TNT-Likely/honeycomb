@@ -18,7 +18,7 @@ description: BeeCount 全家桶发版流水线:App(BeeCount)与自建云(BeeCoun
 
 ```
 0 预检 → 1 确认门(范围+版本号) → 2 Cloud 打 tag → 3 App 打 tag
-→ 4 changelog 双格式 → 5 官网文档同步 → 6 视频+文案(可选) → 7 收尾核验
+→ 4 changelog 双格式 → 5 官网文档同步(纯 bug 修复可跳) → 6 视频+文案(可选) → 7 收尾核验
 ```
 
 只发一端时跳过另一端的步骤;**双端都发时 Cloud 永远在 App 之前**(版本偏斜规则:老 App 忽略新字段没事,新 App 对老服务端可能表现为"设置不生效",所以让用户的生产环境先有新镜像可升)。
@@ -88,10 +88,11 @@ English
 ```
 
 - 上段给 Apple(可以提 iOS 27 这类平台特性);下段 Google Play 执行红线 3。
-- 条目从步骤 0 的提交列表提炼,只写用户可感知的变化;commit 进 BeeCount main(中文 message,如 `docs: 3.4.0 更新日志`)。
+- 条目从步骤 0 的提交列表提炼,只写用户可感知的变化。**`.docs/` 已被 gitignore,changelog 是本地文件、不进 git(历史版本也都未跟踪),写好供用户在商店后台手动粘贴即可——不要 commit,也别 `-f` 强加。**
 
 ### 5. 官网文档同步(BeeCount-Website)
 
+- **纯 bug 修复版本可整步跳过**:本版只是修 bug、没有用户可感知的新功能 / 行为变化时,官网不需要同步(发了 changelog 即可)。下面几条只在**有新功能或行为调整**时做。
 - `docs/changelog.md` 顶部加「X.Y.Z 亮点」小节(emoji + 一句话/条,链接到功能文档)。
 - 大功能写专页:`docs/<分类>/<feature>.md` + `i18n/en/.../<feature>.md` 英文镜像 + `sidebars.ts` 挂载;相关旧页面(预算/统计/账本等)加行为标注。
 - 若 App 新功能依赖 Cloud 新版本:在 `docs/cloud-sync/beecount-cloud.md` 的版本升级 `:::tip` 里写清**先服务端后 App**的升级顺序与迁移说明。
@@ -119,6 +120,8 @@ noproxy gh run list --repo TNT-Likely/BeeCount-Cloud --limit 3
 - Cloud tag 打两段式(如 `1.4`)—— workflow 不触发,看起来"发了"实际什么都没发生。
 - Google Play 段保留 iOS 条目、或商店文案写"配合 Cloud 升级" —— 商店审核/用户困惑,红线 3。
 - 双端发布却先发 App —— 用户升了 App 连不上旧服务端功能,版本偏斜事故。
+- 纯 bug 修复版还去同步官网 / 写功能页 —— 没新功能就只发 changelog,别给官网硬凑"亮点"。
+- 把 changelog 当成要 commit 的文件(它在 gitignore 的 `.docs/` 下)—— 本地写好供粘贴即可。
 
 ## 下一步
 
