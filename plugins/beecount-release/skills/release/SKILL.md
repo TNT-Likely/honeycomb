@@ -93,7 +93,8 @@ English
 ### 5. 官网文档同步(BeeCount-Website)
 
 - **纯 bug 修复版本可整步跳过**:本版只是修 bug、没有用户可感知的新功能 / 行为变化时,官网不需要同步(发了 changelog 即可)。下面几条只在**有新功能或行为调整**时做。
-- `docs/changelog.md` 顶部加「X.Y.Z 亮点」小节(emoji + 一句话/条,链接到功能文档)。
+- `docs/changelog.md` 顶部加「X.Y.Z 亮点」小节(emoji + 一句话/条,链接到功能文档)。**亮点只写新功能/行为变化,修复类、翻译修正类条目一律不进**(修复细节看 GitHub Releases;商店 changelog 不受此限,照常包含修复条目)。
+- **英文镜像 changelog 必须同步**:`i18n/en/docusaurus-plugin-content-docs/current/changelog.md` 加同版本「X.Y.Z highlights」小节,与中文条目一一对应——只更中文版等于英文站漏发。
 - 大功能写专页:`docs/<分类>/<feature>.md` + `i18n/en/.../<feature>.md` 英文镜像 + `sidebars.ts` 挂载;相关旧页面(预算/统计/账本等)加行为标注。
 - 若 App 新功能依赖 Cloud 新版本:在 `docs/cloud-sync/beecount-cloud.md` 的版本升级 `:::tip` 里写清**先服务端后 App**的升级顺序与迁移说明。
 - commit + push(此仓允许直推 main);部署由仓库 CI 处理。
@@ -121,6 +122,8 @@ noproxy gh run list --repo TNT-Likely/BeeCount-Cloud --limit 3
 - Google Play 段保留 iOS 条目、或商店文案写"配合 Cloud 升级" —— 商店审核/用户困惑,红线 3。
 - 双端发布却先发 App —— 用户升了 App 连不上旧服务端功能,版本偏斜事故。
 - 纯 bug 修复版还去同步官网 / 写功能页 —— 没新功能就只发 changelog,别给官网硬凑"亮点"。
+- 混合版本把修复/翻译修正条目写进官网亮点 —— 亮点是营销性摘要,只挑功能写(3.5.5 真踩过,用户点名删)。
+- 官网只更中文 changelog、漏掉 `i18n/en/.../changelog.md` 英文镜像 —— 英文站等于没发这版(3.5.5 真踩过)。
 - 把 changelog 当成要 commit 的文件(它在 gitignore 的 `.docs/` 下)—— 本地写好供粘贴即可。
 
 ## 下一步
