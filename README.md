@@ -23,6 +23,7 @@
 |---|---|---|
 | [fastapi-vite-saas](./plugins/fastapi-vite-saas/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
 | [flutter-riverpod-drift](./plugins/flutter-riverpod-drift/) | Flutter + Riverpod + Drift app 脚手架,带 Design Token + Repository 多端切换,基于 BeeCount 生产实践 | 🟢 v0.1.0 |
+| [x-twitter-scraper](./plugins/x-twitter-scraper/) | Xquik REST/MCP skill for X search, user lookup, follower export, media download, monitors, webhooks, and confirmation-gated publishing workflows | 🟢 v2.4.16 |
 
 (更多 plugin 陆续加入中)
 

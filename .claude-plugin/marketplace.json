@@ -75,6 +75,22 @@
       "license": "MIT",
       "keywords": ["release", "beecount", "changelog", "ci", "workflow"],
       "category": "productivity"
+    },
+    {
+      "name": "x-twitter-scraper",
+      "source": "./plugins/x-twitter-scraper",
+      "displayName": "Xquik X Twitter Scraper",
+      "description": "Xquik REST/MCP skill for X search, user lookup, follower export, media download, monitors, webhooks, and confirmation-gated publishing workflows.",
+      "version": "2.4.16",
+      "author": {
+        "name": "Xquik",
+        "url": "https://github.com/Xquik-dev/x-twitter-scraper"
+      },
+      "homepage": "https://docs.xquik.com",
+      "repository": "https://github.com/Xquik-dev/x-twitter-scraper",
+      "license": "MIT",
+      "keywords": ["x", "twitter", "scraper", "social-media", "mcp", "webhooks", "api"],
+      "category": "productivity"
     }
   ]
 }
