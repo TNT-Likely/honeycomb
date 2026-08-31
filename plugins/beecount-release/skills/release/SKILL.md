@@ -12,7 +12,6 @@ description: BeeCount 全家桶发版流水线:App(BeeCount)与自建云(BeeCoun
 1. **版本号与发布范围必须用户拍板**。用 AskUserQuestion 一次问清:这次发 App、Cloud,还是两个都发?各用什么版本号?可以用 `git tag --sort=-v:refname | head -1` 推算建议值(默认 minor +1)作为推荐选项,但**用户没确认前绝不打 tag**。
 2. **打 tag 前的最后一步,把即将执行的 tag 命令(仓库+版本号)展示给用户过目**。两个仓的 tag 序列差很远(App 3.x vs Cloud 1.x),打串了就是公开事故——历史上真的发生过在 BeeCount 仓里打 Cloud 版本号的事。
 3. 商店文案红线:Google Play `<lang>` 段**不得出现任何 iOS 内容**(纯 iOS 条目整条剔除,不是改写);商店文案**不写自部署/服务端运维**条目(那些只进 Cloud 的 GitHub Release 和官网)。
-4. 本机所有 git push / gh / curl 一律加 `noproxy` 前缀(Zscaler)。
 
 ## 流程
 
@@ -40,7 +39,7 @@ AskUserQuestion 问两件事(可一次问完):**范围**(仅 App / 仅 Cloud / �
 ### 2. Cloud 发版(若在范围内)
 
 ```bash
-cd ~/code/mine/BeeCount-Cloud && git tag <X.Y.Z> && noproxy git push origin <X.Y.Z>
+cd ~/code/mine/BeeCount-Cloud && git tag <X.Y.Z> && git push origin <X.Y.Z>
 ```
 
 - tag **必须三段式 `*.*.*`**(两段式不触发 release workflow)。
@@ -50,7 +49,7 @@ cd ~/code/mine/BeeCount-Cloud && git tag <X.Y.Z> && noproxy git push origin <X.Y
 ### 3. App 发版(若在范围内)
 
 ```bash
-cd ~/code/mine/BeeCount && git tag <X.Y.Z> && noproxy git push origin <X.Y.Z>
+cd ~/code/mine/BeeCount && git tag <X.Y.Z> && git push origin <X.Y.Z>
 ```
 
 - **不要改 pubspec.yaml 的 version**(本地永远是 0.0.1):CI 从 tag 名注入版本号,本地改了也会被覆盖,纯属白改。
@@ -106,8 +105,8 @@ English
 ### 7. 收尾核验
 
 ```bash
-noproxy gh run list --repo TNT-Likely/BeeCount --limit 3
-noproxy gh run list --repo TNT-Likely/BeeCount-Cloud --limit 3
+gh run list --repo TNT-Likely/BeeCount --limit 3
+gh run list --repo TNT-Likely/BeeCount-Cloud --limit 3
 ```
 
 - 确认两边 Actions 绿、GitHub Release 已生成(失败要读日志、修复后重打 tag 或 rerun)。
