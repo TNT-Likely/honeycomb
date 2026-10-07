@@ -26,7 +26,9 @@ python3 scripts/qa/isolated_app_cloud.py stop --run "$qa_run_dir"
 
 QA 主包 `com.tntlikely.beecount.qa`，扩展 `.qa.BeeCountWidgetExtension`，App Group `group.com.tntlikely.beecount.qa`；所有已有模拟器受保护。产物身份不符时不可安装。
 
-`evidence/` 下：逐项 `acceptance.json`、真实 Cloud `cloud-projection.json`、`environment.json`、正常入口 `restart-persistence.json` 和合成数据截图。原始日志、credentials/env、构建产物及 `private-backups/` 留在私有 run，不复制到 PR。
+`restart-check` 用项目 CocoaPods 已使用的 Ruby `xcodeproj` 生成原生 UI 测试工程。构建后的 `.qa.smoke.xctrunner` / `.qa.smoke` ID 先核验，再在同一新 UDID 处理首次通知权限弹窗、断言复制交易与金额可见；不启用并行模拟器克隆。
+
+`evidence/` 下：逐项 `acceptance.json`、真实 Cloud `cloud-projection.json`、`environment.json`、正常入口 `restart-persistence.json` 和合成数据截图。environment 还记录原生 UI 测试退出码；不能仅凭进程存活和数据库有数据判定正常入口完成。原始日志、credentials/env、构建产物、原生 xcresult 及 `private-backups/` 留在私有 run，不复制到 PR。
 
 首页复制用例覆盖：实际长按菜单与预填、取消后再次复制、独立新身份、编辑备注与重复保存、当前日期、标签/账户/标记/币种、收入/转账余额/外币、原附件及周期关系不继承、首页切换账本、服务 503 后恢复、真实 owner/editor 邀请与共享资源引用、Cloud web 写 API 修改后拉回、多次同步及正常入口持久化。
 

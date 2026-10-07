@@ -25,5 +25,7 @@
 | Push 成功但全量快照字段丢失 | 分别核对增量 payload、projection、full snapshot 与 web 部分更新；不要只检查服务响应码 |
 | 报告体积异常大 | integration screenshot 回调可能把原始 PNG bytes 留在 reportData，写报告前移除 screenshot 数组，图片另存 |
 | 测试结束截图显示桌面 | 备份流程可能已 terminate QA App。正常入口重新启动、检查进程并截图；不能据此直接判断业务崩溃 |
+| 正常入口截图只有系统权限弹窗 | 用独立身份的原生 UI runner 处理弹窗，再断言主页业务对象可见；Flutter 富文本在原生 accessibility 中可能是 Other，不能只查询 StaticText |
+| 截图还是刚更新前的画面 | 数据断言完成后再推进帧并等待原生 compositor；检查截图实际内容，不能只依赖文件名判断结果 |
 
 这些处理有版本和适用条件。先检查当前框架/项目实现与日志，不把历史故障当成其他项目的默认行为。
