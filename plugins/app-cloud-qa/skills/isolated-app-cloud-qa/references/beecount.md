@@ -17,10 +17,14 @@ python3 scripts/qa/isolated_app_cloud.py build --run "$qa_run_dir" --flutter <Fl
 python3 scripts/qa/isolated_app_cloud.py preflight --run "$qa_run_dir"
 python3 scripts/qa/isolated_app_cloud.py run --run "$qa_run_dir" --flutter <Flutter可执行文件>
 python3 scripts/qa/isolated_app_cloud.py restart-check --run "$qa_run_dir" --flutter <Flutter可执行文件>
-python3 scripts/qa/isolated_app_cloud.py stop --run "$qa_run_dir"
+python3 scripts/qa/isolated_app_cloud.py review --run "$qa_run_dir"
 ```
 
 默认 Cloud ref 为 `origin/main`，本地 checkout 分支不切换。联调修复时显式指定 ref，manifest 记录实际 SHA。Cloud checkout 的 `.venv/bin/python` 只读复用；数据库迁移在新目录执行。runtime 参数取本机已安装版本，默认值不代表本机一定可用。
+
+`review` 启动或复用同一 run 的 Cloud，恢复已核验的正常入口 QA App 并打开模拟器；不迁移、重装或重新生成 fixture。旧 run 缺少 Python 路径时加 `--cloud-repo <原 checkout>`。交付后保持运行，待用户明确验收完成或要求关闭再执行 `stop --run "$qa_run_dir"`。报告记录自动验收快照，另列当前环境运行状态；打包、开 PR 和结束聊天不触发清理。
+
+人工 Cloud 验收需要 Node.js/pnpm，在本次固定 SHA 的源码副本构建 web，产物进入本次静态目录并使用同源 QA API。准备阶段创建静态目录，QA 身份路由优先于 SPA fallback。用浏览器打开本次 origin，登录与 App 相同的私有 QA 账号，选中同一账本并保留交易列表；不打印密码或 token。页面可查看不等于完整 web UI 回归通过。
 
 ## 本适配的身份和证据
 

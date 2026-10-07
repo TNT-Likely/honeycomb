@@ -35,7 +35,7 @@
 | 工具 | 怎么用 |
 |---|---|
 | **Claude Code** | `/plugin marketplace add TNT-Likely/honeycomb` 一键装(原生) |
-| **OpenAI Codex CLI** | SKILL.md 格式与 Claude Code 兼容,把内容塞进项目根 `AGENTS.md` 或 `--system` 参数 |
+| **OpenAI Codex** | 用 skill-installer 从本仓安装整个 skill 目录到 `~/.codex/skills/<skill-name>`，保留 references 与 agents |
 | **Cursor** | `cp plugins/<x>/skills/<y>/SKILL.md .cursor/rules/<name>.mdc`(逐项目),或用社区 [rule-porter](https://github.com/nedcodes-ok/rule-porter) 自动转换 |
 | **Cline / Continue.dev** | 复制 SKILL.md 到 VSCode 设置的 custom instructions / `~/.continue/config.json` |
 | **Aider** | `cat plugins/<x>/skills/<y>/SKILL.md >> CONVENTIONS.md` |
