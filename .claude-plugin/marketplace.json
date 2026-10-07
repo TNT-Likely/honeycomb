@@ -75,6 +75,28 @@
       "license": "MIT",
       "keywords": ["release", "beecount", "changelog", "ci", "workflow"],
       "category": "productivity"
+    },
+    {
+      "name": "app-cloud-qa",
+      "source": "./plugins/app-cloud-qa",
+      "displayName": "App 与 Cloud 隔离验收",
+      "description": "在独立设备与新数据库验证真实 UI、App/Cloud 双向同步与持久化，保护现用数据并输出可核对证据。",
+      "version": "0.1.0",
+      "author": {
+        "name": "sunxiao",
+        "url": "https://github.com/TNT-Likely"
+      },
+      "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/app-cloud-qa",
+      "repository": "https://github.com/TNT-Likely/honeycomb",
+      "license": "MIT",
+      "keywords": [
+        "qa",
+        "app",
+        "cloud",
+        "sync",
+        "isolation"
+      ],
+      "category": "productivity"
     }
   ]
 }

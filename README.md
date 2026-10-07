@@ -24,6 +24,8 @@
 | [fastapi-vite-saas](./plugins/fastapi-vite-saas/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
 | [flutter-riverpod-drift](./plugins/flutter-riverpod-drift/) | Flutter + Riverpod + Drift app 脚手架,带 Design Token + Repository 多端切换,基于 BeeCount 生产实践 | 🟢 v0.1.0 |
 
+| [app-cloud-qa](./plugins/app-cloud-qa/) | 独立模拟器与新数据库的 App/Cloud 实服同步验收、私有备份与真实证据 | 🟢 v0.1.0 |
+
 (更多 plugin 陆续加入中)
 
 ## 在其他 AI 工具里用 honeycomb
@@ -33,7 +35,7 @@
 | 工具 | 怎么用 |
 |---|---|
 | **Claude Code** | `/plugin marketplace add TNT-Likely/honeycomb` 一键装(原生) |
-| **OpenAI Codex CLI** | SKILL.md 格式与 Claude Code 兼容,把内容塞进项目根 `AGENTS.md` 或 `--system` 参数 |
+| **OpenAI Codex** | 用 skill-installer 从本仓安装整个 skill 目录到 `~/.codex/skills/<skill-name>`，保留 references 与 agents |
 | **Cursor** | `cp plugins/<x>/skills/<y>/SKILL.md .cursor/rules/<name>.mdc`(逐项目),或用社区 [rule-porter](https://github.com/nedcodes-ok/rule-porter) 自动转换 |
 | **Cline / Continue.dev** | 复制 SKILL.md 到 VSCode 设置的 custom instructions / `~/.continue/config.json` |
 | **Aider** | `cat plugins/<x>/skills/<y>/SKILL.md >> CONVENTIONS.md` |

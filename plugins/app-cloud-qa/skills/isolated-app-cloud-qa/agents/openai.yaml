@@ -1,0 +1,4 @@
+interface:
+  display_name: "App 与 Cloud 隔离验收"
+  short_description: "在独立模拟器与新数据库验证 App、Cloud 双向同步，保护现用数据"
+  default_prompt: "使用 $isolated-app-cloud-qa 为当前功能建立隔离的 App 与 Cloud 验收环境，执行双向同步并整理真实证据。"

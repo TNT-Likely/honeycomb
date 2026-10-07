@@ -1,0 +1,10 @@
+{
+  "name": "app-cloud-qa",
+  "description": "在独立设备与新数据库执行 App、Cloud 实服双向同步验收，保留可核对证据并保护现用数据。",
+  "version": "0.1.0",
+  "author": {"name": "sunxiao", "url": "https://github.com/TNT-Likely"},
+  "homepage": "https://github.com/TNT-Likely/honeycomb/tree/main/plugins/app-cloud-qa",
+  "repository": "https://github.com/TNT-Likely/honeycomb",
+  "license": "MIT",
+  "keywords": ["qa", "app", "cloud", "sync", "isolation"]
+}
