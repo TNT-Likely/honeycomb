@@ -24,6 +24,8 @@
 | [fastapi-vite-saas](./plugins/fastapi-vite-saas/) | FastAPI + pnpm/Vite + Docker + GHA 单仓双端项目脚手架,基于 BeeCount-Cloud 生产实践 | 🟢 v0.1.0 |
 | [flutter-riverpod-drift](./plugins/flutter-riverpod-drift/) | Flutter + Riverpod + Drift app 脚手架,带 Design Token + Repository 多端切换,基于 BeeCount 生产实践 | 🟢 v0.1.0 |
 
+| [app-cloud-qa](./plugins/app-cloud-qa/) | 独立模拟器与新数据库的 App/Cloud 实服同步验收、私有备份与真实证据 | 🟢 v0.1.0 |
+
 (更多 plugin 陆续加入中)
 
 ## 在其他 AI 工具里用 honeycomb
