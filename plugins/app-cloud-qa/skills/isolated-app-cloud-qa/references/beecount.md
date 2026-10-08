@@ -26,6 +26,8 @@ python3 scripts/qa/isolated_app_cloud.py review --run "$qa_run_dir"
 
 MCP 场景使用 `prepare --scenario mcp-receipt-attachments --cloud-ref <功能 SHA>`，由 `mcp_receipt_attachments_live_test.dart` 使用本次私有 PAT 经真实 Streamable HTTP 的 initialize、tools/list、tools/call 上传合成小票，再创建/编辑交易。不能用直接调用 Python tool 函数或 JWT 写 API 替代 MCP 协议验收。核对 MCP→App 的有序文件身份、SHA 与生产预览，以及 App 实际预览删除→MCP 查询；覆盖省略/null 保留、空列表清空、替换和只读 PAT 拒绝。客户端文件上传脚本也应在同一私有环境实跑，远程 Cloud 不读取客户端路径。Web 图片查看与正常入口重启独立核对；MCP 审计日志排除 Base64 与文件名，公开验收包排除 PAT、Base64 和私人文件名，仅保留合成数据与可公开元数据。
 
+本地文件入口还需独立运行 `scripts/mcp_local_files.py` 的真实 stdio MCP 客户端链路：`upload_attachment(file_path=...)` 的工具 schema 不暴露 Base64；使用大于 680KB 的合成原图，核对本地文件、Cloud 实际存储与 App 下载文件的字节数及 SHA256 全部相同，禁止为适应模型参数而缩放、转码或拆分图片。验证目录外文件、符号链接越界和空文件拒绝，其余读写工具及原始 Cloud 错误结果仍能转发。Claude Code 安装与 health-check 单独记录，具体模型会话内的手工验收交给用户；不把 SDK 验收写成 LLM 客户端 UI 验收。
+
 `review` 启动或复用同一 run 的 Cloud，恢复已核验的正常入口 QA App 并打开模拟器；不迁移、重装或重新生成 fixture。旧 run 缺少 Python 路径时加 `--cloud-repo <原 checkout>`。交付后保持运行，待用户明确验收完成或要求关闭再执行 `stop --run "$qa_run_dir"`。报告记录自动验收快照，另列当前环境运行状态；打包、开 PR 和结束聊天不触发清理。
 
 人工 Cloud 验收需要 Node.js/pnpm，在本次固定 SHA 的源码副本构建 web，产物进入本次静态目录并使用同源 QA API。准备阶段创建静态目录，QA 身份路由优先于 SPA fallback。用浏览器打开本次 origin，登录与 App 相同的私有 QA 账号，选中同一账本并保留交易列表；不打印密码或 token。页面可查看不等于完整 web UI 回归通过。
