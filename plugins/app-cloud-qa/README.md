@@ -1,27 +1,7 @@
-# App 与 Cloud 隔离验收
+# 已迁移到 BeeCount 项目
 
-提供 `isolated-app-cloud-qa` skill，用于移动 App 与自建 Cloud 的实服同步验收。
+`isolated-app-cloud-qa` 与 BeeCount 的代码、发布和验收配置绑定，已迁回 [BeeCount/.agents/skills/isolated-app-cloud-qa](https://github.com/TNT-Likely/BeeCount/tree/main/.agents/skills/isolated-app-cloud-qa)。本路径仅保留迁移说明，不再分发 plugin 或全局 skill。
 
-## Codex 本地安装
+Codex 使用项目 `.agents/skills`，Claude Code 使用项目 `.claude/skills` 引用同一源码。Cloud / Website 需要时使用项目安装器，具体步骤见 [项目 skill 安装说明](https://github.com/TNT-Likely/BeeCount/blob/main/docs/contributing/PROJECT_SKILLS_ZH.md)。
 
-作为纯 skill 安装到 `~/.codex/skills/isolated-app-cloud-qa`，保留整个 skill 目录及 references、agents。使用 Codex 自带的 skill-installer 从本仓安装：
-
-```sh
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
-  --repo TNT-Likely/honeycomb \
-  --path plugins/app-cloud-qa/skills/isolated-app-cloud-qa
-```
-
-安装后下一轮对话可使用 `$isolated-app-cloud-qa`，也可按场景自动选用。更新时从同一仓库同步 skill 目录；不要把正文复制进项目 AGENTS.md。
-
-## Claude Code 插件安装
-
-```sh
-/plugin install app-cloud-qa@honeycomb
-```
-
-入口：[SKILL.md](skills/isolated-app-cloud-qa/SKILL.md)。执行脚本由各项目维护；本 plugin 保存隔离决策、验收流程、失败处理与报告要求。
-
-BeeCount 的实现示例见 [项目适配说明](skills/isolated-app-cloud-qa/references/beecount.md)。这项能力不包含发版或合并 PR。
-
-自动验收后交接正常 App 与已登录的 Cloud 网页，保持隔离服务运行，等用户明确验收完成后再关闭。完整结果以独立离线 HTML / ZIP 交付，不进入功能分支。
+曾安装旧 plugin 时先安装项目入口并核对，再卸载 `app-cloud-qa@honeycomb`；旧用户级副本可通过 BeeCount 的 `migrate-global` 命令备份并移出全局发现目录。不要继续使用旧 plugin 安装命令。
