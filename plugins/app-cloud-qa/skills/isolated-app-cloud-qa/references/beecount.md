@@ -22,7 +22,9 @@ python3 scripts/qa/isolated_app_cloud.py review --run "$qa_run_dir"
 
 默认 Cloud ref 为 `origin/main`，本地 checkout 分支不切换。联调修复时显式指定 ref，manifest 记录实际 SHA。Cloud checkout 的 `.venv/bin/python` 只读复用；数据库迁移在新目录执行。runtime 参数取本机已安装版本，默认值不代表本机一定可用。
 
-按当前 runner 的 `--scenario` 选择验收场景：默认首页复制 `transaction-copy`，支持时可选分类父子关系 `category-parent` 或网页图片 `web-transaction-images`。图片场景由 `web_transaction_images_live_test.dart` 与真实 Web UI 配合；看到 `QA_STAGE_READY_<阶段>` 后完成对应网页操作，再等待下一阶段。等待操作超时仍是该次驱动失败；保留原始退出码，并将后续独立复核结果分开报告。合成 App 图片 fixture 不代表系统相册选择器已验收。
+按当前 runner 的 `--scenario` 选择验收场景：默认首页复制 `transaction-copy`，支持时可选分类父子关系 `category-parent` 、网页图片 `web-transaction-images` 或 MCP 小票 `mcp-receipt-attachments`。图片场景由 `web_transaction_images_live_test.dart` 与真实 Web UI 配合；看到 `QA_STAGE_READY_<阶段>` 后完成对应网页操作，再等待下一阶段。等待操作超时仍是该次驱动失败；保留原始退出码，并将后续独立复核结果分开报告。合成 App 图片 fixture 不代表系统相册选择器已验收。
+
+MCP 场景使用 `prepare --scenario mcp-receipt-attachments --cloud-ref <功能 SHA>`，由 `mcp_receipt_attachments_live_test.dart` 使用本次私有 PAT 经真实 Streamable HTTP 的 initialize、tools/list、tools/call 上传合成小票，再创建/编辑交易。不能用直接调用 Python tool 函数或 JWT 写 API 替代 MCP 协议验收。核对 MCP→App 的有序文件身份、SHA 与生产预览，以及 App 实际预览删除→MCP 查询；覆盖省略/null 保留、空列表清空、替换和只读 PAT 拒绝。客户端文件上传脚本也应在同一私有环境实跑，远程 Cloud 不读取客户端路径。Web 图片查看与正常入口重启独立核对；MCP 审计日志排除 Base64 与文件名，公开验收包排除 PAT、Base64 和私人文件名，仅保留合成数据与可公开元数据。
 
 `review` 启动或复用同一 run 的 Cloud，恢复已核验的正常入口 QA App 并打开模拟器；不迁移、重装或重新生成 fixture。旧 run 缺少 Python 路径时加 `--cloud-repo <原 checkout>`。交付后保持运行，待用户明确验收完成或要求关闭再执行 `stop --run "$qa_run_dir"`。报告记录自动验收快照，另列当前环境运行状态；打包、开 PR 和结束聊天不触发清理。
 
