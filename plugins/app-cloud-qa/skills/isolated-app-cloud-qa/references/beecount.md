@@ -1,6 +1,6 @@
 # BeeCount 项目适配
 
-App 仓维护 `scripts/qa/isolated_app_cloud.py`、`scripts/qa/test_isolation.py`、`integration_test/transaction_copy_live_test.dart` 和 `docs/contributing/ISOLATED_APP_CLOUD_QA_ZH.md`。执行前读项目 guide 与当前 runner，以下命令中的路径和 ref 按本次 checkout 替换。
+App 仓维护 `scripts/qa/isolated_app_cloud.py`、`scripts/qa/test_isolation.py`、`integration_test/*_live_test.dart` 和 `docs/contributing/ISOLATED_APP_CLOUD_QA_ZH.md`。执行前读项目 guide 与当前 runner，以下命令中的路径和 ref 按本次 checkout 替换。
 
 ```sh
 python3 -m unittest discover -s scripts/qa -p 'test_*.py' -v
@@ -22,6 +22,8 @@ python3 scripts/qa/isolated_app_cloud.py review --run "$qa_run_dir"
 
 默认 Cloud ref 为 `origin/main`，本地 checkout 分支不切换。联调修复时显式指定 ref，manifest 记录实际 SHA。Cloud checkout 的 `.venv/bin/python` 只读复用；数据库迁移在新目录执行。runtime 参数取本机已安装版本，默认值不代表本机一定可用。
 
+按当前 runner 的 `--scenario` 选择验收场景：默认首页复制 `transaction-copy`，支持时可选分类父子关系 `category-parent` 或网页图片 `web-transaction-images`。图片场景由 `web_transaction_images_live_test.dart` 与真实 Web UI 配合；看到 `QA_STAGE_READY_<阶段>` 后完成对应网页操作，再等待下一阶段。等待操作超时仍是该次驱动失败；保留原始退出码，并将后续独立复核结果分开报告。合成 App 图片 fixture 不代表系统相册选择器已验收。
+
 `review` 启动或复用同一 run 的 Cloud，恢复已核验的正常入口 QA App 并打开模拟器；不迁移、重装或重新生成 fixture。旧 run 缺少 Python 路径时加 `--cloud-repo <原 checkout>`。交付后保持运行，待用户明确验收完成或要求关闭再执行 `stop --run "$qa_run_dir"`。报告记录自动验收快照，另列当前环境运行状态；打包、开 PR 和结束聊天不触发清理。
 
 人工 Cloud 验收需要 Node.js/pnpm，在本次固定 SHA 的源码副本构建 web，产物进入本次静态目录并使用同源 QA API。准备阶段创建静态目录，QA 身份路由优先于 SPA fallback。用浏览器打开本次 origin，登录与 App 相同的私有 QA 账号，选中同一账本并保留交易列表；不打印密码或 token。页面可查看不等于完整 web UI 回归通过。
@@ -42,4 +44,4 @@ QA 主包 `com.tntlikely.beecount.qa`，扩展 `.qa.BeeCountWidgetExtension`，A
 
 完整验收结果在忽略目录或仓库外制作离线 HTML 与 ZIP，不提交到功能分支。用界面截图、操作流程和 App/Cloud 对照展示结论，按场景分组列实际断言，技术元数据与 JSON 放折叠附录。包内加入打开说明、manifest 与 SHA256 校验表；不得复制包含私人路径的原始 run manifest。
 
-PR 保留简短结论、覆盖边界、跨仓依赖和报告下载链接。用户授权上传时采用独立 ZIP 附件，上传后核对下载 hash；上传失败则给出本地完整包及限制，不创建应用发版或提交报告文件。
+PR 保留简短结论、覆盖边界、跨仓依赖和报告下载链接。已授权上传时按 [GitHub PR 附件交付](github-pr-attachments.md)，通过网页文件选择器上传独立 ZIP，链接直接放进 PR 描述并回下载核对 SHA256。上传失败则给出本地完整包及限制，不创建应用发版或提交报告文件。
